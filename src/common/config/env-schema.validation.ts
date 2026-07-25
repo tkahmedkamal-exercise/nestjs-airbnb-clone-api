@@ -5,4 +5,6 @@ export const envSchema = joi.object({
   NODE_ENV: joi.string().required(),
   FALLBACK_LANGUAGE: joi.string().default('en'),
   MONGO_URI: joi.string().required(),
+  JWT_SECRET: joi.string().required(),
+  ACCESS_TOKEN_EXPIRES_IN: joi.string().default('7d'),
 });

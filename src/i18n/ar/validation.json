@@ -1,6 +1,14 @@
 {
   "USER": {
     "EMAIL_EXISTS": "البريد الإلكتروني مستخدم من قبل",
-    "PHONE_NUMBER_EXISTS": "رقم الموبايل مستخدم من قبل"
+    "EMAIL_REQUIRED": "البريد الإلكتروني مطلوب",
+    "INVALID_EMAIL": "البريد الإلكتروني غير صحيح",
+    "PHONE_NUMBER_EXISTS": "رقم الموبايل مستخدم من قبل",
+    "NAME_MUST_BE_STRING": "يجب أن يكون الاسم نصاَ",
+    "PHONE_MUST_BE_STRING": "يجب أن يكون رقم الهاتف نصاَ",
+    "PASSWORD_MUST_BE_STRING": "يجب أن تكون كلمة المرور نصاََ",
+    "NAME_REQUIRED": "الاسم مطلوب",
+    "PHONE_REQUIRED": "رقم الجوال مطلوب",
+    "PASSWORD_REQUIRED": "كلمة المرور مطلوبة"
   }
 }
