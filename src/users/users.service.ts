@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
-import { Model } from 'mongoose';
+import { Model, QueryFilter } from 'mongoose';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { BadRequestException } from '../common/error-handling/custom-exceptions/bad-request.exception';
 import bcrypt from 'bcryptjs';
-import { CustomI18nService } from '../i18n/custom-i18n.service';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<User>,
-    private readonly i18n: CustomI18nService,
+    private readonly i18n: I18nService,
   ) {}
 
   async create(body: CreateUserDto) {
@@ -41,5 +41,9 @@ export class UsersService {
       ...body,
       password: hashedPassword,
     });
+  }
+
+  async findOne(query: QueryFilter<User>) {
+    return await this.userModel.findOne(query).select('-__v');
   }
 }

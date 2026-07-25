@@ -9,6 +9,7 @@
     "PASSWORD_MUST_BE_STRING": "Password must be a string",
     "NAME_REQUIRED": "Name is required",
     "PHONE_REQUIRED": "Phone number is required",
-    "PASSWORD_REQUIRED": "Password is required"
+    "PASSWORD_REQUIRED": "Password is required",
+    "INVALID_CREDENTIALS": "Email or Password incorrect"
   }
 }

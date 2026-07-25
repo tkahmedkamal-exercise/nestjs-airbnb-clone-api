@@ -9,6 +9,7 @@
     "PASSWORD_MUST_BE_STRING": "يجب أن تكون كلمة المرور نصاََ",
     "NAME_REQUIRED": "الاسم مطلوب",
     "PHONE_REQUIRED": "رقم الجوال مطلوب",
-    "PASSWORD_REQUIRED": "كلمة المرور مطلوبة"
+    "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
+    "INVALID_CREDENTIALS": "البريد الإلكتروني او كلمة المرور غير صحيحة"
   }
 }
