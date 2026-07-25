@@ -1,3 +1,6 @@
 {
-  "EMAIL_NOT_FOUND": "Email not found"
+  "USER": {
+    "EMAIL_EXISTS": "Email is already exists",
+    "PHONE_NUMBER_EXISTS": "Phone number already exists"
+  }
 }
