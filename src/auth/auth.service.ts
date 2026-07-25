@@ -12,10 +12,7 @@ export class AuthService {
 
   async register(body: RegisterDto) {
     const user = await this.usersService.create(body);
-
-    const tokens = await this.generateTokens(String(user._id));
-
-    return tokens;
+    return await this.generateTokens(String(user._id));
   }
 
   private async generateTokens(userId: string) {
