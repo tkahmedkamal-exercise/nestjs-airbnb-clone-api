@@ -15,7 +15,7 @@ export class CustomExceptionFilter implements ExceptionFilter {
     const response = host.switchToHttp().getResponse<Response>();
 
     if (exception instanceof BaseCustomException) {
-      response.status(exception.status).json({
+      return response.status(exception.status).json({
         errors: exception.format(),
       });
     }
@@ -33,12 +33,12 @@ export class CustomExceptionFilter implements ExceptionFilter {
     if (exception instanceof I18nValidationException) {
       const inputFormatError = formatInputValidationError(exception.errors);
 
-      response.status(400).json({
+      return response.status(400).json({
         errors: inputFormatError,
       });
     }
 
-    response.status(500).json({
+    return response.status(500).json({
       errors: {
         message: (exception as Error).message,
       },
