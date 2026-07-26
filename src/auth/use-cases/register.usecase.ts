@@ -12,6 +12,11 @@ export class RegisterUseCase {
 
   async execute(body: RegisterDto) {
     const user = await this.usersService.create(body);
-    return await this.generateTokensUseCase.execute(String(user._id));
+    const tokens = await this.generateTokensUseCase.execute(String(user._id));
+
+    return {
+      user: user.toObject(),
+      tokens,
+    };
   }
 }

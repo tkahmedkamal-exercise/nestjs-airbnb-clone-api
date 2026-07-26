@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { BadRequestException } from '../../common/error-handling/custom-exceptions/bad-request.exception';
 import bcrypt from 'bcryptjs';
 import { I18nService } from 'nestjs-i18n';
-import { CreateUserDto } from '../dtos/create-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../schemas/user.schema';
 import { Model } from 'mongoose';
+import { CreateUserDto } from '../dtos/create-user.dto';
 
 @Injectable()
 export class CreateUserUseCase {

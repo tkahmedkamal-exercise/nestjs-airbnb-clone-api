@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 import { QueryFilter } from 'mongoose';
-import { CreateUserDto } from './dtos/create-user.dto';
 import { CreateUserUseCase } from './use-cases/create-user.usecase';
 import { FindOneUserUseCase } from './use-cases/find-one-user.usecase';
+import { CreateUserDto } from './dtos/create-user.dto';
 
 @Injectable()
 export class UsersService {

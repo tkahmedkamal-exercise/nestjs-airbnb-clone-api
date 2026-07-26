@@ -39,7 +39,7 @@ export class LoginUseCase {
     const tokens = await this.generateTokensUseCase.execute(String(user._id));
 
     return {
-      user: user,
+      user: user.toObject(), // convert from Document to Object
       tokens,
     };
   }
