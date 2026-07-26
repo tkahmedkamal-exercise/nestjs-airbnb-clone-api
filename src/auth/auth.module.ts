@@ -10,6 +10,10 @@ import {
   RefreshToken,
   RefreshTokenSchema,
 } from './schemas/refresh-token.schema';
+import { GenerateTokensUseCase } from './use-cases/generate-tokens.usecase';
+import { RegisterUseCase } from './use-cases/register.usecase';
+import { LoginUseCase } from './use-cases/login';
+import { RefreshTokenUseCase } from './use-cases/refresh-token.usecase';
 
 @Module({
   imports: [
@@ -29,6 +33,12 @@ import {
     UsersModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    GenerateTokensUseCase,
+    RegisterUseCase,
+    LoginUseCase,
+    RefreshTokenUseCase,
+  ],
 })
 export class AuthModule {}
