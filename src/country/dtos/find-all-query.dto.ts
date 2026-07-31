@@ -1,4 +1,4 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class FindAllQueryDto {
@@ -19,6 +19,11 @@ export class FindAllQueryDto {
   @IsOptional()
   @Type(() => Number)
   limit: number;
+
+  @IsBoolean()
+  @IsOptional()
+  @Type(() => Boolean)
+  ignoreLimit: boolean;
 
   @IsString()
   @IsOptional()

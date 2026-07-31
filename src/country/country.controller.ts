@@ -17,23 +17,26 @@ import { CreateCountryDto } from './dtos/create-country.dto';
 import { CountryParamDto } from './dtos/country-param.dto';
 import { UpdateCountryDto } from './dtos/update-country.dto';
 import { FindAllQueryDto } from './dtos/find-all-query.dto';
+import { FindAllDto } from './dtos/find-all.dto';
 
 @Controller('countries')
-@Serialize(CountryResponseDto)
 export class CountryController {
   constructor(private readonly countryService: CountryService) {}
 
   @Post()
+  @Serialize(CountryResponseDto)
   async create(@Body() body: CreateCountryDto) {
     return await this.countryService.create(body);
   }
 
   @Get('/:id')
+  @Serialize(CountryResponseDto)
   async getCountryById(@Param() { id }: CountryParamDto) {
     return await this.countryService.getCountryById(id);
   }
 
   @Get()
+  @Serialize(FindAllDto)
   async findAllCountries(@Query() query: FindAllQueryDto) {
     return await this.countryService.findAllCountries(query);
   }
@@ -45,6 +48,7 @@ export class CountryController {
   }
 
   @Patch('/:id')
+  @Serialize(CountryResponseDto)
   async update(
     @Param() { id }: CountryParamDto,
     @Body() body: UpdateCountryDto,

@@ -4,11 +4,13 @@ import { Country } from '../schemas/country.schema';
 import { Injectable } from '@nestjs/common';
 import { NotFoundException } from '../../common/error-handling/custom-exceptions/not-found.exception';
 import { UpdateCountryDto } from '../dtos/update-country.dto';
+import { MODEL_NAMES } from '../../common/data-access';
 
 @Injectable()
 export class UpdateCountryUseCase {
   constructor(
-    @InjectModel(Country.name) private readonly countryModel: Model<Country>,
+    @InjectModel(MODEL_NAMES.COUNTRIES)
+    private readonly countryModel: Model<Country>,
   ) {}
 
   async execute(id: string, body: UpdateCountryDto) {

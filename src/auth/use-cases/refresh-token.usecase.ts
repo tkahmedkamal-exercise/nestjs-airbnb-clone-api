@@ -1,25 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../../users/users.service';
 import { GenerateTokensUseCase } from './generate-tokens.usecase';
 import bcrypt from 'bcryptjs';
-import { I18nService } from 'nestjs-i18n';
 import { RefreshTokenDto } from '../dtos/refresh-token.dto';
 import { ForbiddenException } from '../../common/error-handling/custom-exceptions/forbidden.exception';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { RefreshToken } from '../schemas/refresh-token.schema';
 import { InjectModel } from '@nestjs/mongoose';
+import { MODEL_NAMES } from '../../common/data-access';
 
 type RefreshTokenPayload = { type: string; userId: string };
 
 @Injectable()
 export class RefreshTokenUseCase {
   constructor(
-    private readonly i18n: I18nService,
     private readonly jwtService: JwtService,
-    private readonly usersService: UsersService,
     private readonly generateTokensUseCase: GenerateTokensUseCase,
-    @InjectModel(RefreshToken.name)
+    @InjectModel(MODEL_NAMES.REFRESH_TOKENS)
     private readonly refreshTokenModel: Model<RefreshToken>,
   ) {}
 

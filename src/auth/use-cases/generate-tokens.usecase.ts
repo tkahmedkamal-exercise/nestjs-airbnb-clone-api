@@ -6,12 +6,13 @@ import { RefreshToken } from '../schemas/refresh-token.schema';
 import { Model } from 'mongoose';
 import { ConfigService } from '@nestjs/config';
 import { Environment } from '../../common/config/env.interface';
+import { MODEL_NAMES } from '../../common/data-access';
 
 @Injectable()
 export class GenerateTokensUseCase {
   constructor(
     private readonly jwtService: JwtService,
-    @InjectModel(RefreshToken.name)
+    @InjectModel(MODEL_NAMES.REFRESH_TOKENS)
     private readonly refreshTokenModel: Model<RefreshToken>,
     private readonly configService: ConfigService<Environment>,
   ) {}

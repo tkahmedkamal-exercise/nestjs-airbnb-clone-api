@@ -21,10 +21,10 @@ class UserDataDto {
   phoneNumber: string;
 
   @Expose()
-  createdAt: string;
+  createdAt: Date;
 
   @Expose()
-  updatedAt: string;
+  updatedAt: Date;
 }
 
 export class UserDto {
