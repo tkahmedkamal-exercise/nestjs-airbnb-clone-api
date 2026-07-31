@@ -27,5 +27,6 @@ import { CountryRepository } from './repository/country.repository';
     UpdateCountryUseCase,
     CountryRepository,
   ],
+  exports: [CountryService],
 })
 export class CountryModule {}
