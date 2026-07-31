@@ -3,4 +3,5 @@ export enum MODEL_NAMES {
   USERS = 'users',
   REFRESH_TOKENS = 'refresh-tokens',
   CITIES = 'cities',
+  CURRENCIES = 'currencies',
 }
