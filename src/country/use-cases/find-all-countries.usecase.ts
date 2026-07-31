@@ -1,21 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Country } from '../schemas/country.schema';
-import { Model } from 'mongoose';
 import { FindAllQueryDto } from '../dtos/find-all-query.dto';
+import { CountryRepository } from '../repository/country.repository';
 
 @Injectable()
 export class FindAllCountriesUseCase {
-  constructor(
-    @InjectModel(Country.name) private readonly countryModel: Model<Country>,
-  ) {}
+  constructor(private readonly countryRepository: CountryRepository) {}
 
   async execute(query?: FindAllQueryDto) {
-    const page = query?.page || 1;
-    const limit = query?.limit || 10;
-    const skip = (page - 1) * limit;
-    const sort = query?.sort?.toLowerCase() === 'asc' ? 'asc' : 'desc';
-
     const filter = {
       isDeleted: false,
       name: {
@@ -28,13 +19,18 @@ export class FindAllCountriesUseCase {
       },
     };
 
-    // const totalRecords = await this.countryModel.countDocuments(filter);
+    const { data, ...rest } = await this.countryRepository.findPaginated(
+      filter,
+      {
+        page: query?.page,
+        limit: query?.limit,
+        ignoreLimit: query?.ignoreLimit,
+      },
+    );
 
-    return await this.countryModel
-      .find(filter)
-      .sort({ createdAt: sort })
-      .skip(skip)
-      .limit(limit)
-      .lean();
+    return {
+      data,
+      ...rest,
+    };
   }
 }

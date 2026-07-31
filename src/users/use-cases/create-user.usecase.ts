@@ -6,12 +6,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../schemas/user.schema';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../dtos/create-user.dto';
+import { MODEL_NAMES } from '../../common/data-access';
 
 @Injectable()
 export class CreateUserUseCase {
   constructor(
     private readonly i18n: I18nService,
-    @InjectModel(User.name) private readonly userModel: Model<User>,
+    @InjectModel(MODEL_NAMES.USERS) private readonly userModel: Model<User>,
   ) {}
 
   async execute(body: CreateUserDto) {

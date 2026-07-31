@@ -1,5 +1,4 @@
 import { Expose, Transform } from 'class-transformer';
-import { Types } from 'mongoose';
 
 export class CountryResponseDto {
   @Expose({ name: '_id' })

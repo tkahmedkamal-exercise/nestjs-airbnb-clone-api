@@ -6,14 +6,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { Environment } from '../common/config/env.interface';
 import { MongooseModule } from '@nestjs/mongoose';
-import {
-  RefreshToken,
-  RefreshTokenSchema,
-} from './schemas/refresh-token.schema';
+import { RefreshTokenSchema } from './schemas/refresh-token.schema';
 import { GenerateTokensUseCase } from './use-cases/generate-tokens.usecase';
 import { RegisterUseCase } from './use-cases/register.usecase';
 import { LoginUseCase } from './use-cases/login';
 import { RefreshTokenUseCase } from './use-cases/refresh-token.usecase';
+import { MODEL_NAMES } from '../common/data-access';
 
 @Module({
   imports: [
@@ -28,7 +26,8 @@ import { RefreshTokenUseCase } from './use-cases/refresh-token.usecase';
       inject: [ConfigService],
     }),
     MongooseModule.forFeature([
-      { name: RefreshToken.name, schema: RefreshTokenSchema },
+      // { name: RefreshToken.name, schema: RefreshTokenSchema },
+      { name: MODEL_NAMES.REFRESH_TOKENS, schema: RefreshTokenSchema },
     ]),
     UsersModule,
   ],
