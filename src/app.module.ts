@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { CountryModule } from './country/country.module';
 import { CitiesModule } from './cities/cities.module';
 import { CurrencyModule } from './currency/currency.module';
+import { UnitCategoryModule } from './unit-category/unit-category.module';
+import { AppSettingsModule } from './app-settings/app-settings.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { CurrencyModule } from './currency/currency.module';
     CountryModule,
     CitiesModule,
     CurrencyModule,
+    UnitCategoryModule,
+    AppSettingsModule,
   ],
 })
 export class AppModule {}
