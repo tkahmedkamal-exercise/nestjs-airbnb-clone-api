@@ -1,4 +1,4 @@
-import { Body, Controller, Put } from '@nestjs/common';
+import { Body, Controller, Get, Put } from '@nestjs/common';
 import { AppSettingsService } from './app-settings.service';
 import { UpsertAppSettingsDto } from './dtos/upsert-app-settings.dto';
 import { Serialize } from '../interceptor/serialize.interceptor';
@@ -12,5 +12,11 @@ export class AppSettingsController {
   @Serialize(AppSettingsResponseDto)
   upsert(@Body() body: UpsertAppSettingsDto) {
     return this.appSettingsService.upsert(body);
+  }
+
+  @Get()
+  @Serialize(AppSettingsResponseDto)
+  find() {
+    return this.appSettingsService.find();
   }
 }

@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MODEL_NAMES } from '../common/data-access';
 import { appSettingsSchema } from './schemas/app-settings.schema';
 import { UpsertAppSettingsUseCase } from './use-cases/upsert-app-settings.usecase';
+import { FindAppSettingsUseCase } from './use-cases/find-app-settings.usecase';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UpsertAppSettingsUseCase } from './use-cases/upsert-app-settings.usecas
     AppSettingsService,
     AppSettingsRepository,
     UpsertAppSettingsUseCase,
+    FindAppSettingsUseCase,
   ],
 })
 export class AppSettingsModule {}
