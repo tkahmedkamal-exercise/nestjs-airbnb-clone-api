@@ -4,4 +4,6 @@ export enum MODEL_NAMES {
   REFRESH_TOKENS = 'refresh-tokens',
   CITIES = 'cities',
   CURRENCIES = 'currencies',
+  UNIT_CATEGORY = 'unit-categories',
+  APP_SETTINGS = 'app-settings',
 }
