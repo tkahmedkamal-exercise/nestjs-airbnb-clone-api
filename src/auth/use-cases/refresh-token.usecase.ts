@@ -8,8 +8,10 @@ import { Model } from 'mongoose';
 import { RefreshToken } from '../schemas/refresh-token.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { MODEL_NAMES } from '../../common/data-access';
+import { Roles } from '../../common/constants';
+import { createHash } from 'crypto';
 
-type RefreshTokenPayload = { type: string; userId: string };
+type RefreshTokenPayload = { type: string; userId: string; role: Roles };
 
 @Injectable()
 export class RefreshTokenUseCase {
@@ -42,16 +44,20 @@ export class RefreshTokenUseCase {
     if (!refreshTokenDoc) {
       throw new ForbiddenException('Invalid refresh token');
     }
+    const hashedRefreshToken = createHash('sha256')
+      .update(body.refreshToken)
+      .digest('hex');
 
-    const refreshTokenMatched = await bcrypt.compare(
-      body.refreshToken,
-      refreshTokenDoc.refreshToken,
-    );
+    const refreshTokenMatched =
+      hashedRefreshToken === refreshTokenDoc.refreshToken;
 
     if (!refreshTokenMatched) {
       throw new ForbiddenException('Invalid refresh token');
     }
 
-    return await this.generateTokensUseCase.execute(refreshTokenDoc.userId);
+    return await this.generateTokensUseCase.execute({
+      userId: refreshTokenDoc.userId,
+      role: decodedToken.role,
+    });
   }
 }

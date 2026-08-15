@@ -5,4 +5,11 @@ export interface Environment {
   jwtSecret: string;
   accessTokenExpiresIn: string;
   refreshTokenExpiresIn: string;
+  superAdmin: SuperAdmin;
+}
+
+export interface SuperAdmin {
+  name: string;
+  email: string;
+  password: string;
 }

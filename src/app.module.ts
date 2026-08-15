@@ -7,6 +7,7 @@ import { CitiesModule } from './cities/cities.module';
 import { CurrencyModule } from './currency/currency.module';
 import { UnitCategoryModule } from './unit-category/unit-category.module';
 import { AppSettingsModule } from './app-settings/app-settings.module';
+import { AdminsModule } from './admins/admins.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AppSettingsModule } from './app-settings/app-settings.module';
     CurrencyModule,
     UnitCategoryModule,
     AppSettingsModule,
+    AdminsModule,
   ],
 })
 export class AppModule {}
