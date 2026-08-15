@@ -21,6 +21,9 @@ class UserDataDto {
   phoneNumber: string;
 
   @Expose()
+  isSuperAdmin: boolean;
+
+  @Expose()
   createdAt: Date;
 
   @Expose()

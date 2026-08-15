@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { Roles } from '../../common/constants';
 
 export class LoginDto {
   @IsNotEmpty({
@@ -19,4 +20,8 @@ export class LoginDto {
     message: 'validation.USER.PASSWORD_REQUIRED',
   })
   password: string;
+
+  @IsNotEmpty()
+  @IsEnum(Roles)
+  role: Roles;
 }

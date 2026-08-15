@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MODEL_NAMES } from '../common/data-access';
 import { adminSchema } from './schemas/admin.schema';
 import { InitSuperAdminUseCase } from './use-cases/init-super-admin.usecase';
+import { FindOneAdminUseCase } from './use-cases/find-one-admin.usecase';
 
 @Module({
   imports: [
@@ -14,6 +15,12 @@ import { InitSuperAdminUseCase } from './use-cases/init-super-admin.usecase';
     ]),
   ],
   controllers: [AdminsController],
-  providers: [AdminsService, AdminRepository, InitSuperAdminUseCase],
+  providers: [
+    AdminsService,
+    AdminRepository,
+    InitSuperAdminUseCase,
+    FindOneAdminUseCase,
+  ],
+  exports: [AdminsService],
 })
 export class AdminsModule {}

@@ -12,6 +12,9 @@ import { RegisterUseCase } from './use-cases/register.usecase';
 import { LoginUseCase } from './use-cases/login';
 import { RefreshTokenUseCase } from './use-cases/refresh-token.usecase';
 import { MODEL_NAMES } from '../common/data-access';
+import { LoginUserUseCase } from './use-cases/login-user.usecase';
+import { LoginAdminUseCase } from './use-cases/login-admin.usecase';
+import { AdminsModule } from '../admins/admins.module';
 
 @Module({
   imports: [
@@ -30,6 +33,7 @@ import { MODEL_NAMES } from '../common/data-access';
       { name: MODEL_NAMES.REFRESH_TOKENS, schema: RefreshTokenSchema },
     ]),
     UsersModule,
+    AdminsModule,
   ],
   controllers: [AuthController],
   providers: [
@@ -37,6 +41,8 @@ import { MODEL_NAMES } from '../common/data-access';
     GenerateTokensUseCase,
     RegisterUseCase,
     LoginUseCase,
+    LoginUserUseCase,
+    LoginAdminUseCase,
     RefreshTokenUseCase,
   ],
 })
