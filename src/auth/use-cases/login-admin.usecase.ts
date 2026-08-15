@@ -39,7 +39,7 @@ export class LoginAdminUseCase {
     });
 
     return {
-      user: user.toObject(), // convert from Document to Object
+      user, // convert from Document to Object
       tokens,
     };
   }

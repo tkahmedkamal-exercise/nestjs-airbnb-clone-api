@@ -1,11 +1,15 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dtos/register.dto';
 import { LoginDto } from './dtos/login.dto';
 import { RefreshTokenDto } from './dtos/refresh-token.dto';
 import { Serialize } from '../interceptor/serialize.interceptor';
-import { UserDto } from './dtos/user.dto';
+import { UserDataDto, UserDto } from './dtos/user.dto';
+import { Public } from './decorators/public.decorator';
+import { CurrentUser } from './decorators/current-user.decorator';
+import type { CurrentUserType } from './guard/jwt-auth.guard';
 
+@Public()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -25,5 +29,12 @@ export class AuthController {
   @Post('refresh-token')
   refreshToken(@Body() body: RefreshTokenDto) {
     return this.authService.refreshToken(body);
+  }
+
+  @Public(false)
+  @Get('me')
+  @Serialize(UserDataDto)
+  getMe(@CurrentUser() currentUser: CurrentUserType) {
+    return currentUser;
   }
 }

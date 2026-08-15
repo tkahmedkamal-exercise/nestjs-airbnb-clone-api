@@ -42,7 +42,7 @@ export class LoginUserUseCase {
     });
 
     return {
-      user: user.toObject(), // convert from Document to Object
+      user,
       tokens,
     };
   }

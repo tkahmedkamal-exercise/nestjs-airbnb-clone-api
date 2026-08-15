@@ -1,7 +1,7 @@
 import { Expose, Transform, Type } from 'class-transformer';
 import { TokensDto } from './tokens.dto';
 
-class UserDataDto {
+export class UserDataDto {
   @Expose({ name: '_id' })
   id: string;
 

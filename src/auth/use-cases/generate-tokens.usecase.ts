@@ -10,7 +10,7 @@ import { Environment } from '../../common/config/env.interface';
 import { MODEL_NAMES } from '../../common/data-access';
 import { Roles } from '../../common/constants';
 
-interface JwtPayload {
+export interface JwtPayload {
   userId: string;
   role: Roles;
 }
