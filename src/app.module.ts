@@ -8,6 +8,8 @@ import { CurrencyModule } from './currency/currency.module';
 import { UnitCategoryModule } from './unit-category/unit-category.module';
 import { AppSettingsModule } from './app-settings/app-settings.module';
 import { AdminsModule } from './admins/admins.module';
+import { JwtAuthGuard } from './auth/guard/jwt-auth.guard';
+import { AuthorizationGuard } from './auth/guard/authorization.guard';
 
 @Module({
   imports: [
@@ -20,6 +22,16 @@ import { AdminsModule } from './admins/admins.module';
     UnitCategoryModule,
     AppSettingsModule,
     AdminsModule,
+  ],
+  providers: [
+    {
+      provide: 'APP_GUARD',
+      useClass: JwtAuthGuard,
+    },
+    {
+      provide: 'APP_GUARD',
+      useClass: AuthorizationGuard,
+    },
   ],
 })
 export class AppModule {}

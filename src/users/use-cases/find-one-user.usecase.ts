@@ -11,6 +11,6 @@ export class FindOneUserUseCase {
   ) {}
 
   async execute(query: QueryFilter<User>) {
-    return await this.userModel.findOne(query).select('-__v');
+    return await this.userModel.findOne(query).select('-__v').lean();
   }
 }

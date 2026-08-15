@@ -18,7 +18,11 @@ import { UpdateUnitCategoryDto } from './dtos/update-unit-category.dto';
 import { FindAllQueryDto } from './dtos/find-all-query.dto';
 import { FindAllDto } from './dtos/find-all.dto';
 import { UnitCategoryResponseDto } from './dtos/unit-category-response.dto';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { Roles as RolesEnum } from '../common/constants';
+import { Public } from '../auth/decorators/public.decorator';
 
+@Roles(RolesEnum.ADMIN, RolesEnum.USER)
 @Controller('unit-category')
 export class UnitCategoryController {
   constructor(private readonly unitCategoryService: UnitCategoryService) {}
@@ -29,12 +33,14 @@ export class UnitCategoryController {
     return await this.unitCategoryService.create(body);
   }
 
+  @Public()
   @Get('/:id')
   @Serialize(UnitCategoryResponseDto)
   async getUnitCategoryById(@Param() param: UnitCategoryParamDto) {
     return await this.unitCategoryService.getUnitCategoryById(param?.id);
   }
 
+  @Public()
   @Get()
   @Serialize(FindAllDto)
   async findAllUnitCategories(@Query() query: FindAllQueryDto) {

@@ -45,5 +45,6 @@ import { AdminsModule } from '../admins/admins.module';
     LoginAdminUseCase,
     RefreshTokenUseCase,
   ],
+  exports: [JwtModule, UsersModule, AdminsModule],
 })
 export class AuthModule {}
