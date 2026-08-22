@@ -7,4 +7,5 @@ export enum MODEL_NAMES {
   UNIT_CATEGORY = 'unit-categories',
   APP_SETTINGS = 'app-settings',
   ADMINS = 'admins',
+  UNITS = 'units',
 }

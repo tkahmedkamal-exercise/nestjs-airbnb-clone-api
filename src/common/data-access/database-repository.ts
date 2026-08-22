@@ -4,6 +4,7 @@ import {
   Model,
   PipelineStage,
   QueryOptions,
+  PopulateOptions,
   UpdateQuery,
   ClientSession,
 } from 'mongoose';
@@ -39,6 +40,7 @@ export interface DeleteManyOptions {
 
 export interface FindOneOptions {
   session?: ClientSession;
+  populate?: PopulateOptions | (string | PopulateOptions)[];
 }
 
 export interface FindOneAndDeleteOptions {
@@ -101,10 +103,15 @@ export class BaseRepository<T> {
     filterQuery?: Record<string, unknown>,
     options?: FindOneOptions,
   ) {
-    const document = await this.model.findOne(filterQuery, undefined, {
+    const query = this.model.findOne(filterQuery, undefined, {
       session: options?.session,
-      lean: true,
     });
+
+    if (options?.populate) {
+      query.populate(options.populate);
+    }
+
+    const document = await query.lean();
 
     return document;
   }
