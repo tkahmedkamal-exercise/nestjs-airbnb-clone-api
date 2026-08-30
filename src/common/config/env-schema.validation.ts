@@ -11,4 +11,8 @@ export const envSchema = joi.object({
   SUPER_ADMIN_NAME: joi.string().required(),
   SUPER_ADMIN_EMAIL: joi.string().email().required(),
   SUPER_ADMIN_PASSWORD: joi.string().min(6).max(100).required(),
+  S3_REGION: joi.string().required(),
+  S3_ACCESS_KEY_ID: joi.string().required(),
+  S3_BUCKET_NAME: joi.string().required(),
+  MINIO_S3_ENDPOINT: joi.string(),
 });

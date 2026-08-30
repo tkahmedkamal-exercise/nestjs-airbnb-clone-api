@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsBoolean,
   IsMongoId,
@@ -25,6 +26,7 @@ export class CreateUnitDto {
   @IsOptional()
   photos: string[];
 
+  @Type(() => Number)
   @IsNumber()
   @IsNotEmpty()
   costPerDay: number;
@@ -42,32 +44,40 @@ export class CreateUnitDto {
   unitCategory: string;
 
   @IsOptional()
+  @IsMongoId()
   user: string;
 
+  @Type(() => Number)
   @IsNumber()
   @IsNotEmpty()
   roomsCount: number;
 
+  @Type(() => Number)
   @IsNumber()
   @IsNotEmpty()
   adultsCount: number;
 
+  @Type(() => Number)
   @IsNumber()
   @IsNotEmpty()
   kidsCount: number;
 
+  @Type(() => Boolean)
   @IsBoolean()
   @IsNotEmpty()
   hasInternetService: boolean;
 
+  @Type(() => Boolean)
   @IsBoolean()
   @IsNotEmpty()
   hasKitchen: boolean;
 
+  @Type(() => Boolean)
   @IsBoolean()
   @IsOptional()
   hasPrivateGarage: boolean;
 
+  @Type(() => Boolean)
   @IsBoolean()
   @IsOptional()
   isActive: boolean;

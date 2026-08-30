@@ -11,6 +11,7 @@ import { AdminsModule } from './admins/admins.module';
 import { JwtAuthGuard } from './auth/guard/jwt-auth.guard';
 import { AuthorizationGuard } from './auth/guard/authorization.guard';
 import { UnitsModule } from './units/units.module';
+import { FilesUploadModule } from './files-upload/files-upload.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UnitsModule } from './units/units.module';
     AppSettingsModule,
     AdminsModule,
     UnitsModule,
+    FilesUploadModule,
   ],
   providers: [
     {
