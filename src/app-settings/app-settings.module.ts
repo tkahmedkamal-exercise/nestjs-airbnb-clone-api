@@ -21,5 +21,6 @@ import { FindAppSettingsUseCase } from './use-cases/find-app-settings.usecase';
     UpsertAppSettingsUseCase,
     FindAppSettingsUseCase,
   ],
+  exports: [AppSettingsService],
 })
 export class AppSettingsModule {}

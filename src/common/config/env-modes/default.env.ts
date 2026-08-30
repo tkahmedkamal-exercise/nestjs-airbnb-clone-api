@@ -12,4 +12,11 @@ export const defaultEnv = (): Environment => ({
     email: process.env.SUPER_ADMIN_EMAIL!,
     password: process.env.SUPER_ADMIN_PASSWORD!,
   },
+  s3: {
+    region: process.env.S3_REGION!,
+    accessKey: process.env.S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+    bucketName: process.env.S3_BUCKET_NAME!,
+    minioEndpoint: process.env.MINIO_S3_ENDPOINT!,
+  },
 });

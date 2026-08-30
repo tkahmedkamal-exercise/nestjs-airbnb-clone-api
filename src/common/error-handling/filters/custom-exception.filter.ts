@@ -20,21 +20,21 @@ export class CustomExceptionFilter implements ExceptionFilter {
       });
     }
 
-    // if (exception instanceof HttpException) {
-    //   const status = exception.getStatus();
-    //
-    //   response.status(status).json({
-    //     errors: {
-    //       message: exception.message,
-    //     },
-    //   });
-    // }
-
     if (exception instanceof I18nValidationException) {
       const inputFormatError = formatInputValidationError(exception.errors);
 
       return response.status(400).json({
         errors: inputFormatError,
+      });
+    }
+
+    if (exception instanceof HttpException) {
+      const status = exception.getStatus();
+
+      return response.status(status).json({
+        errors: {
+          message: exception.message,
+        },
       });
     }
 

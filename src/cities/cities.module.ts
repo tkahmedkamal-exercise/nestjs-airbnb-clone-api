@@ -31,5 +31,6 @@ import { DeleteCityUseCase } from './use-cases/delete-city.usecase';
     SoftDeleteCityUseCase,
     DeleteCityUseCase,
   ],
+  exports: [CitiesService],
 })
 export class CitiesModule {}

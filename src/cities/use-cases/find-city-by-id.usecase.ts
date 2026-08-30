@@ -7,12 +7,15 @@ export class FindCityByIdUseCase {
   constructor(private readonly cityRepository: CityRepository) {}
 
   async execute(id: string) {
-    const city = (
-      await this.cityRepository.findOne({
+    const city = await this.cityRepository.findOne(
+      {
         _id: id,
         isDeleted: false,
-      })
-    )?.populate({ path: 'country', select: 'name code' });
+      },
+      {
+        populate: { path: 'country', select: 'name code' },
+      },
+    );
 
     if (!city) {
       throw new NotFoundException('City not found');
