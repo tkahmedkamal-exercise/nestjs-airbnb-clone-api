@@ -19,4 +19,16 @@ export const defaultEnv = (): Environment => ({
     bucketName: process.env.S3_BUCKET_NAME!,
     minioEndpoint: process.env.MINIO_S3_ENDPOINT!,
   },
+  smtp: {
+    host: process.env.SMTP_HOST as string,
+    port: Number(process.env.SMTP_PORT),
+    secure: process.env.SMTP_SECURE === 'true',
+    auth:
+      process.env.SMTP_AUTH_EMAIL && process.env.SMTP_AUTH_PASS
+        ? {
+            user: process.env.SMTP_AUTH_EMAIL,
+            pass: process.env.SMTP_AUTH_PASS,
+          }
+        : undefined,
+  },
 });

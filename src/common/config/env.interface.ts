@@ -7,6 +7,7 @@ export interface Environment {
   refreshTokenExpiresIn: string;
   superAdmin: SuperAdmin;
   s3: AwsS3;
+  smtp: Smtp;
 }
 
 export interface SuperAdmin {
@@ -21,4 +22,14 @@ export interface AwsS3 {
   secretAccessKey: string;
   bucketName: string;
   minioEndpoint?: string;
+}
+
+export interface Smtp {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth?: {
+    user: string;
+    pass: string;
+  };
 }
