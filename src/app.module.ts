@@ -13,6 +13,7 @@ import { AuthorizationGuard } from './auth/guard/authorization.guard';
 import { UnitsModule } from './units/units.module';
 import { FilesUploadModule } from './files-upload/files-upload.module';
 import { MailModule } from './mail/mail.module';
+import { OtpModule } from './otp/otp.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { MailModule } from './mail/mail.module';
     UnitsModule,
     FilesUploadModule,
     MailModule,
+    OtpModule,
   ],
   providers: [
     {
