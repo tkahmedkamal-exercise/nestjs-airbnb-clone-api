@@ -15,4 +15,9 @@ export const envSchema = joi.object({
   S3_ACCESS_KEY_ID: joi.string().required(),
   S3_BUCKET_NAME: joi.string().required(),
   MINIO_S3_ENDPOINT: joi.string(),
+  SMTP_HOST: joi.string().required(),
+  SMTP_PORT: joi.number().required(),
+  SMTP_SECURE: joi.boolean().required(),
+  SMTP_AUTH_EMAIL: joi.string().optional().allow('').default(''),
+  SMTP_AUTH_PASS: joi.string().optional().allow('').default(''),
 });

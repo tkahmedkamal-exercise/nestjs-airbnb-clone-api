@@ -34,12 +34,13 @@ services:
       mc anonymous set download local/nest-airbnb-clone;
       "
 
-  # mailpit:
-  #   image: axllent/mailpit:v1.30
-  #   container_name: mailpit
-  #   ports:
-  #     - 1025:1025
-  #     - 8025:8025
+  mailpit:
+    image: axllent/mailpit:v1.30
+    container_name: mailpit
+    ports:
+      - 1025:1025
+      - 8025:8025
+
 volumes:
   mongodb_data:
   minio:
