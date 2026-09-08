@@ -15,6 +15,7 @@ import { MODEL_NAMES } from '../common/data-access';
 import { LoginUserUseCase } from './use-cases/login-user.usecase';
 import { LoginAdminUseCase } from './use-cases/login-admin.usecase';
 import { AdminsModule } from '../admins/admins.module';
+import { OtpModule } from '../otp/otp.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { AdminsModule } from '../admins/admins.module';
     ]),
     UsersModule,
     AdminsModule,
+    OtpModule,
   ],
   controllers: [AuthController],
   providers: [
